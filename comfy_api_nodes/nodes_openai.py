@@ -7,7 +7,7 @@ from PIL import Image
 from comfy.comfy_types.node_typing import IO, ComfyNodeABC, InputTypeDict
 
 
-from comfy_api_nodes.apis import (
+from comfy_api_nodes.apis.openai_config import (
     OpenAIImageGenerationRequest,
     OpenAIImageEditRequest,
     OpenAIImageGenerationResponse,
@@ -119,13 +119,13 @@ class OpenAIDalle2(ComfyNodeABC):
     ):
         validate_string(prompt, strip_whitespace=False)
         model = "dall-e-2"
-        path = "/proxy/openai/images/generations"
+        path = "/v1/images/generations"
         content_type = "application/json"
         request_class = OpenAIImageGenerationRequest
         img_binary = None
 
         if image is not None and mask is not None:
-            path = "/proxy/openai/images/edits"
+            path = "/v1/images/edits"
             content_type = "multipart/form-data"
             request_class = OpenAIImageEditRequest
 
@@ -270,7 +270,7 @@ class OpenAIDalle3(ComfyNodeABC):
         # build the operation
         operation = SynchronousOperation(
             endpoint=ApiEndpoint(
-                path="/proxy/openai/images/generations",
+                path="/v1/images/generations",
                 method=HttpMethod.POST,
                 request_model=OpenAIImageGenerationRequest,
                 response_model=OpenAIImageGenerationResponse,
@@ -404,7 +404,7 @@ class OpenAIGPTImage1(ComfyNodeABC):
     ):
         validate_string(prompt, strip_whitespace=False)
         model = "gpt-image-1"
-        path = "/proxy/openai/images/generations"
+        path = "/v1/images/generations"
         content_type="application/json"
         request_class = OpenAIImageGenerationRequest
         img_binaries = []
@@ -412,7 +412,7 @@ class OpenAIGPTImage1(ComfyNodeABC):
         files = []
 
         if image is not None:
-            path = "/proxy/openai/images/edits"
+            path = "/v1/images/edits"
             request_class = OpenAIImageEditRequest
             content_type ="multipart/form-data"
 

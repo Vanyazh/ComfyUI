@@ -2,6 +2,7 @@ import os
 import datetime
 import json
 import logging
+from typing import Optional, Dict, Any
 import folder_paths
 
 # Get the logger instance
@@ -40,7 +41,7 @@ def log_request_response(
     operation_id: str,
     request_method: str,
     request_url: str,
-    request_headers: dict | None = None,
+    request_headers: Optional[dict] = None,
     request_params: dict | None = None,
     request_data: any = None,
     response_status_code: int | None = None,
