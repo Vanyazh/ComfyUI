@@ -714,7 +714,7 @@ def unet_dtype(device=None, model_params=0, supported_dtypes=[torch.float16, tor
     if model_params < 0:
         model_params = 1000000000000000000000
     if args.fp32_unet:
-        return torch.float32
+        return torch.float16
     if args.fp64_unet:
         return torch.float64
     if args.bf16_unet:
@@ -760,7 +760,7 @@ def unet_dtype(device=None, model_params=0, supported_dtypes=[torch.float16, tor
             if torch.bfloat16 in supported_dtypes:
                 return torch.bfloat16
 
-    return torch.float32
+    return torch.float16
 
 # None means no manual cast
 def unet_manual_cast(weight_dtype, inference_device, supported_dtypes=[torch.float16, torch.bfloat16, torch.float32]):
@@ -785,7 +785,7 @@ def unet_manual_cast(weight_dtype, inference_device, supported_dtypes=[torch.flo
         if dt == torch.bfloat16 and bf16_supported:
             return torch.bfloat16
 
-    return torch.float32
+    return torch.float16
 
 def text_encoder_offload_device():
     if args.gpu_only:
@@ -828,7 +828,7 @@ def text_encoder_dtype(device=None):
     elif args.bf16_text_enc:
         return torch.bfloat16
     elif args.fp32_text_enc:
-        return torch.float32
+        return torch.float16
 
     if is_device_cpu(device):
         return torch.float16
@@ -859,7 +859,10 @@ def vae_dtype(device=None, allowed_dtypes=[]):
     elif args.bf16_vae:
         return torch.bfloat16
     elif args.fp32_vae:
-        return torch.float32
+        return torch.float16
+
+    if is_device_mps(device):
+        return torch.float16
 
     for d in allowed_dtypes:
         if d == torch.float16 and should_use_fp16(device):
@@ -869,7 +872,7 @@ def vae_dtype(device=None, allowed_dtypes=[]):
         if d == torch.bfloat16 and (not is_amd()) and should_use_bf16(device):
             return d
 
-    return torch.float32
+    return torch.float16
 
 def get_autocast_device(dev):
     if hasattr(dev, 'type'):
@@ -1290,6 +1293,10 @@ def soft_empty_cache(force=False):
     elif torch.cuda.is_available():
         torch.cuda.empty_cache()
         torch.cuda.ipc_collect()
+
+
+def check_gpu_status():
+    print(f"[MPS] Current GPU allocation: {torch.mps.current_allocated_memory()/1024**2:.2f}MB")
 
 def unload_all_models():
     free_memory(1e30, get_torch_device())

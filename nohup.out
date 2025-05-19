@@ -1,0 +1,514 @@
+Warning, you are using an old pytorch version and some ckpt/pt files might be loaded unsafely. Upgrading to 2.4 or above is recommended.
+Total VRAM 16384 MB, total RAM 16384 MB
+pytorch version: 2.2.2
+Mac Version (14, 5)
+Set vram state to: SHARED
+Device: mps
+/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Using sub quadratic optimization for attention, if you have memory or speed issues try using: --use-split-cross-attention
+Python version: 3.9.6 (default, Feb  3 2024, 15:58:28) 
+[Clang 15.0.0 (clang-1500.3.9.4)]
+ComfyUI version: 0.3.34
+ComfyUI frontend version: 1.19.9
+[Prompt Server] web root: /Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/comfyui_frontend_package/static
+
+Import times for custom nodes:
+   0.0 seconds: /Volumes/T7/cursor/comfy/ComfyUI/custom_nodes/websocket_image_save.py
+
+Starting server
+
+To see the GUI go to: http://127.0.0.1:8188
+got prompt
+Failed to validate prompt for output 9:
+* VAEEncodeForInpaint 14:
+  - Required input is missing: vae
+Output will be ignored
+invalid prompt: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}
+got prompt
+model weight dtype torch.float16, manual cast: None
+model_type EPS
+Using split attention in VAE
+Using split attention in VAE
+VAE load device: mps, offload device: cpu, dtype: torch.bfloat16
+Requested to load SD1ClipModel
+loaded completely 9.5367431640625e+25 235.84423828125 True
+CLIP/text encoder model load device: cpu, offload device: cpu, current: cpu, dtype: torch.float16
+loaded diffusion model directly to GPU
+Requested to load BaseModel
+loaded completely 9.5367431640625e+25 1639.4336013793945 True
+Requested to load AutoencoderKL
+1 models unloaded.
+!!! Exception during processing !!! BFloat16 is not supported on MPS
+Traceback (most recent call last):
+  File "/Volumes/T7/cursor/comfy/ComfyUI/execution.py", line 349, in execute
+    output_data, output_ui, has_subgraph = get_output_data(obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/execution.py", line 224, in get_output_data
+    return_values = _map_node_over_list(obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/execution.py", line 196, in _map_node_over_list
+    process_inputs(input_dict, i)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/execution.py", line 185, in process_inputs
+    results.append(getattr(obj, func)(**inputs))
+  File "/Volumes/T7/cursor/comfy/ComfyUI/nodes.py", line 394, in encode
+    t = vae.encode(pixels)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/sd.py", line 632, in encode
+    model_management.load_models_gpu([self.patcher], memory_required=memory_used, force_full_load=self.disable_offload)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_management.py", line 625, in load_models_gpu
+    loaded_model.model_load(lowvram_model_memory, force_patch_weights=force_patch_weights)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_management.py", line 444, in model_load
+    self.model_use_more_vram(use_more_vram, force_patch_weights=force_patch_weights)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_management.py", line 473, in model_use_more_vram
+    return self.model.partially_load(self.device, extra_memory, force_patch_weights=force_patch_weights)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_patcher.py", line 832, in partially_load
+    raise e
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_patcher.py", line 829, in partially_load
+    self.load(device_to, lowvram_model_memory=current_used + extra_memory, force_patch_weights=force_patch_weights, full_load=full_load)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_patcher.py", line 670, in load
+    x[2].to(device_to)
+  File "/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 1152, in to
+    return self._apply(convert)
+  File "/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 825, in _apply
+    param_applied = fn(param)
+  File "/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 1150, in convert
+    return t.to(device, dtype if t.is_floating_point() or t.is_complex() else None, non_blocking)
+TypeError: BFloat16 is not supported on MPS
+
+Prompt executed in 71.40 seconds
+got prompt
+Requested to load AutoencoderKL
+0 models unloaded.
+!!! Exception during processing !!! BFloat16 is not supported on MPS
+Traceback (most recent call last):
+  File "/Volumes/T7/cursor/comfy/ComfyUI/execution.py", line 349, in execute
+    output_data, output_ui, has_subgraph = get_output_data(obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/execution.py", line 224, in get_output_data
+    return_values = _map_node_over_list(obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/execution.py", line 196, in _map_node_over_list
+    process_inputs(input_dict, i)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/execution.py", line 185, in process_inputs
+    results.append(getattr(obj, func)(**inputs))
+  File "/Volumes/T7/cursor/comfy/ComfyUI/nodes.py", line 394, in encode
+    t = vae.encode(pixels)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/sd.py", line 632, in encode
+    model_management.load_models_gpu([self.patcher], memory_required=memory_used, force_full_load=self.disable_offload)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_management.py", line 625, in load_models_gpu
+    loaded_model.model_load(lowvram_model_memory, force_patch_weights=force_patch_weights)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_management.py", line 444, in model_load
+    self.model_use_more_vram(use_more_vram, force_patch_weights=force_patch_weights)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_management.py", line 473, in model_use_more_vram
+    return self.model.partially_load(self.device, extra_memory, force_patch_weights=force_patch_weights)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_patcher.py", line 832, in partially_load
+    raise e
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_patcher.py", line 829, in partially_load
+    self.load(device_to, lowvram_model_memory=current_used + extra_memory, force_patch_weights=force_patch_weights, full_load=full_load)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_patcher.py", line 670, in load
+    x[2].to(device_to)
+  File "/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 1152, in to
+    return self._apply(convert)
+  File "/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 825, in _apply
+    param_applied = fn(param)
+  File "/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 1150, in convert
+    return t.to(device, dtype if t.is_floating_point() or t.is_complex() else None, non_blocking)
+TypeError: BFloat16 is not supported on MPS
+
+Prompt executed in 0.39 seconds
+got prompt
+Failed to validate prompt for output 5:
+* VAEEncodeForInpaint 3:
+  - Required input is missing: vae
+* VAEDecode 4:
+  - Required input is missing: vae
+Output will be ignored
+invalid prompt: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}
+got prompt
+Failed to validate prompt for output 5:
+* KSampler 8:
+  - Required input is missing: negative
+Output will be ignored
+invalid prompt: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}
+got prompt
+Requested to load AutoencoderKL
+0 models unloaded.
+!!! Exception during processing !!! BFloat16 is not supported on MPS
+Traceback (most recent call last):
+  File "/Volumes/T7/cursor/comfy/ComfyUI/execution.py", line 349, in execute
+    output_data, output_ui, has_subgraph = get_output_data(obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/execution.py", line 224, in get_output_data
+    return_values = _map_node_over_list(obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/execution.py", line 196, in _map_node_over_list
+    process_inputs(input_dict, i)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/execution.py", line 185, in process_inputs
+    results.append(getattr(obj, func)(**inputs))
+  File "/Volumes/T7/cursor/comfy/ComfyUI/nodes.py", line 394, in encode
+    t = vae.encode(pixels)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/sd.py", line 632, in encode
+    model_management.load_models_gpu([self.patcher], memory_required=memory_used, force_full_load=self.disable_offload)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_management.py", line 625, in load_models_gpu
+    loaded_model.model_load(lowvram_model_memory, force_patch_weights=force_patch_weights)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_management.py", line 444, in model_load
+    self.model_use_more_vram(use_more_vram, force_patch_weights=force_patch_weights)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_management.py", line 473, in model_use_more_vram
+    return self.model.partially_load(self.device, extra_memory, force_patch_weights=force_patch_weights)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_patcher.py", line 832, in partially_load
+    raise e
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_patcher.py", line 829, in partially_load
+    self.load(device_to, lowvram_model_memory=current_used + extra_memory, force_patch_weights=force_patch_weights, full_load=full_load)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_patcher.py", line 670, in load
+    x[2].to(device_to)
+  File "/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 1152, in to
+    return self._apply(convert)
+  File "/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 825, in _apply
+    param_applied = fn(param)
+  File "/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 1150, in convert
+    return t.to(device, dtype if t.is_floating_point() or t.is_complex() else None, non_blocking)
+TypeError: BFloat16 is not supported on MPS
+
+Prompt executed in 0.69 seconds
+got prompt
+Requested to load AutoencoderKL
+0 models unloaded.
+!!! Exception during processing !!! BFloat16 is not supported on MPS
+Traceback (most recent call last):
+  File "/Volumes/T7/cursor/comfy/ComfyUI/execution.py", line 349, in execute
+    output_data, output_ui, has_subgraph = get_output_data(obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/execution.py", line 224, in get_output_data
+    return_values = _map_node_over_list(obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/execution.py", line 196, in _map_node_over_list
+    process_inputs(input_dict, i)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/execution.py", line 185, in process_inputs
+    results.append(getattr(obj, func)(**inputs))
+  File "/Volumes/T7/cursor/comfy/ComfyUI/nodes.py", line 394, in encode
+    t = vae.encode(pixels)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/sd.py", line 632, in encode
+    model_management.load_models_gpu([self.patcher], memory_required=memory_used, force_full_load=self.disable_offload)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_management.py", line 625, in load_models_gpu
+    loaded_model.model_load(lowvram_model_memory, force_patch_weights=force_patch_weights)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_management.py", line 444, in model_load
+    self.model_use_more_vram(use_more_vram, force_patch_weights=force_patch_weights)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_management.py", line 473, in model_use_more_vram
+    return self.model.partially_load(self.device, extra_memory, force_patch_weights=force_patch_weights)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_patcher.py", line 832, in partially_load
+    raise e
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_patcher.py", line 829, in partially_load
+    self.load(device_to, lowvram_model_memory=current_used + extra_memory, force_patch_weights=force_patch_weights, full_load=full_load)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_patcher.py", line 670, in load
+    x[2].to(device_to)
+  File "/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 1152, in to
+    return self._apply(convert)
+  File "/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 825, in _apply
+    param_applied = fn(param)
+  File "/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 1150, in convert
+    return t.to(device, dtype if t.is_floating_point() or t.is_complex() else None, non_blocking)
+TypeError: BFloat16 is not supported on MPS
+
+Prompt executed in 0.22 seconds
+got prompt
+Requested to load AutoencoderKL
+0 models unloaded.
+!!! Exception during processing !!! BFloat16 is not supported on MPS
+Traceback (most recent call last):
+  File "/Volumes/T7/cursor/comfy/ComfyUI/execution.py", line 349, in execute
+    output_data, output_ui, has_subgraph = get_output_data(obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/execution.py", line 224, in get_output_data
+    return_values = _map_node_over_list(obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/execution.py", line 196, in _map_node_over_list
+    process_inputs(input_dict, i)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/execution.py", line 185, in process_inputs
+    results.append(getattr(obj, func)(**inputs))
+  File "/Volumes/T7/cursor/comfy/ComfyUI/nodes.py", line 394, in encode
+    t = vae.encode(pixels)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/sd.py", line 632, in encode
+    model_management.load_models_gpu([self.patcher], memory_required=memory_used, force_full_load=self.disable_offload)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_management.py", line 625, in load_models_gpu
+    loaded_model.model_load(lowvram_model_memory, force_patch_weights=force_patch_weights)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_management.py", line 444, in model_load
+    self.model_use_more_vram(use_more_vram, force_patch_weights=force_patch_weights)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_management.py", line 473, in model_use_more_vram
+    return self.model.partially_load(self.device, extra_memory, force_patch_weights=force_patch_weights)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_patcher.py", line 832, in partially_load
+    raise e
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_patcher.py", line 829, in partially_load
+    self.load(device_to, lowvram_model_memory=current_used + extra_memory, force_patch_weights=force_patch_weights, full_load=full_load)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_patcher.py", line 670, in load
+    x[2].to(device_to)
+  File "/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 1152, in to
+    return self._apply(convert)
+  File "/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 825, in _apply
+    param_applied = fn(param)
+  File "/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 1150, in convert
+    return t.to(device, dtype if t.is_floating_point() or t.is_complex() else None, non_blocking)
+TypeError: BFloat16 is not supported on MPS
+
+Prompt executed in 0.45 seconds
+Warning, you are using an old pytorch version and some ckpt/pt files might be loaded unsafely. Upgrading to 2.4 or above is recommended.
+Total VRAM 16384 MB, total RAM 16384 MB
+pytorch version: 2.2.2
+Mac Version (14, 5)
+Set vram state to: SHARED
+Device: mps
+/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Using sub quadratic optimization for attention, if you have memory or speed issues try using: --use-split-cross-attention
+Python version: 3.9.6 (default, Feb  3 2024, 15:58:28) 
+[Clang 15.0.0 (clang-1500.3.9.4)]
+ComfyUI version: 0.3.34
+ComfyUI frontend version: 1.19.9
+[Prompt Server] web root: /Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/comfyui_frontend_package/static
+
+Import times for custom nodes:
+   0.0 seconds: /Volumes/T7/cursor/comfy/ComfyUI/custom_nodes/websocket_image_save.py
+
+Starting server
+
+To see the GUI go to: http://127.0.0.1:8188
+got prompt
+model weight dtype torch.float16, manual cast: None
+model_type EPS
+Using split attention in VAE
+Using split attention in VAE
+VAE load device: mps, offload device: cpu, dtype: torch.float16
+Requested to load SD1ClipModel
+loaded completely 9.5367431640625e+25 235.84423828125 True
+CLIP/text encoder model load device: cpu, offload device: cpu, current: cpu, dtype: torch.float16
+loaded diffusion model directly to GPU
+Requested to load BaseModel
+loaded completely 9.5367431640625e+25 1639.406135559082 True
+  0%|          | 0/20 [00:00<?, ?it/s]  5%|▌         | 1/20 [00:09<03:01,  9.55s/it] 10%|█         | 2/20 [00:20<03:01, 10.10s/it] 15%|█▌        | 3/20 [00:32<03:12, 11.33s/it]Warning, you are using an old pytorch version and some ckpt/pt files might be loaded unsafely. Upgrading to 2.4 or above is recommended.
+Total VRAM 16384 MB, total RAM 16384 MB
+pytorch version: 2.2.2
+Mac Version (14, 5)
+Set vram state to: SHARED
+Device: mps
+/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Using sub quadratic optimization for attention, if you have memory or speed issues try using: --use-split-cross-attention
+ 20%|██        | 4/20 [01:34<08:18, 31.16s/it]Python version: 3.9.6 (default, Feb  3 2024, 15:58:28) 
+[Clang 15.0.0 (clang-1500.3.9.4)]
+ComfyUI version: 0.3.34
+ComfyUI frontend version: 1.19.9
+[Prompt Server] web root: /Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/comfyui_frontend_package/static
+
+Import times for custom nodes:
+   0.0 seconds: /Volumes/T7/cursor/comfy/ComfyUI/custom_nodes/websocket_image_save.py
+
+Starting server
+
+Traceback (most recent call last):
+  File "/Volumes/T7/cursor/comfy/ComfyUI/main.py", line 308, in <module>
+    event_loop.run_until_complete(x)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Volumes/T7/cursor/comfy/ComfyUI/main.py", line 293, in start_all
+    await run(prompt_server, address=args.listen, port=args.port, verbose=not args.dont_print_server, call_on_start=call_on_start)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/main.py", line 218, in run
+    await asyncio.gather(
+  File "/Volumes/T7/cursor/comfy/ComfyUI/server.py", line 853, in start_multi_address
+    await site.start()
+  File "/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/aiohttp/web_runner.py", line 121, in start
+    self._server = await loop.create_server(
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 1494, in create_server
+    raise OSError(err.errno, 'error while attempting '
+OSError: [Errno 48] error while attempting to bind on address ('127.0.0.1', 8188): address already in use
+ 25%|██▌       | 5/20 [01:52<06:35, 26.35s/it] 30%|███       | 6/20 [02:02<04:53, 20.96s/it] 35%|███▌      | 7/20 [02:10<03:38, 16.78s/it] 40%|████      | 8/20 [02:24<03:10, 15.87s/it] 45%|████▌     | 9/20 [02:47<03:18, 18.03s/it] 50%|█████     | 10/20 [03:10<03:15, 19.51s/it] 55%|█████▌    | 11/20 [03:23<02:39, 17.67s/it] 60%|██████    | 12/20 [03:37<02:10, 16.29s/it] 65%|██████▌   | 13/20 [03:46<01:38, 14.13s/it] 70%|███████   | 14/20 [03:54<01:14, 12.43s/it] 75%|███████▌  | 15/20 [04:05<00:59, 11.90s/it] 80%|████████  | 16/20 [04:14<00:44, 11.12s/it] 85%|████████▌ | 17/20 [04:26<00:33, 11.28s/it] 90%|█████████ | 18/20 [04:39<00:23, 11.93s/it] 95%|█████████▌| 19/20 [04:52<00:12, 12.04s/it]100%|██████████| 20/20 [05:02<00:00, 11.68s/it]100%|██████████| 20/20 [05:02<00:00, 15.15s/it]
+Requested to load AutoencoderKL
+loaded completely 9.5367431640625e+25 159.55708122253418 True
+Prompt executed in 339.62 seconds
+got prompt
+  0%|          | 0/20 [00:00<?, ?it/s]  5%|▌         | 1/20 [00:35<11:14, 35.47s/it] 10%|█         | 2/20 [00:43<05:44, 19.16s/it] 10%|█         | 2/20 [00:55<08:15, 27.54s/it]
+Processing interrupted
+Prompt executed in 55.33 seconds
+got prompt
+  0%|          | 0/20 [00:00<?, ?it/s]  5%|▌         | 1/20 [00:23<07:32, 23.79s/it] 10%|█         | 2/20 [00:42<06:10, 20.56s/it] 15%|█▌        | 3/20 [01:00<05:32, 19.53s/it] 20%|██        | 4/20 [01:19<05:07, 19.20s/it] 25%|██▌       | 5/20 [01:37<04:44, 18.97s/it] 30%|███       | 6/20 [01:58<04:35, 19.70s/it] 35%|███▌      | 7/20 [02:42<05:56, 27.40s/it] 40%|████      | 8/20 [03:31<06:51, 34.33s/it] 45%|████▌     | 9/20 [03:55<05:44, 31.35s/it] 50%|█████     | 10/20 [04:19<04:48, 28.83s/it] 55%|█████▌    | 11/20 [05:11<05:23, 35.90s/it] 60%|██████    | 12/20 [05:32<04:11, 31.38s/it] 65%|██████▌   | 13/20 [05:51<03:14, 27.73s/it] 70%|███████   | 14/20 [06:17<02:43, 27.19s/it] 75%|███████▌  | 15/20 [06:45<02:17, 27.50s/it] 80%|████████  | 16/20 [07:05<01:40, 25.23s/it] 85%|████████▌ | 17/20 [07:29<01:14, 24.83s/it] 90%|█████████ | 18/20 [07:58<00:52, 26.20s/it] 95%|█████████▌| 19/20 [08:20<00:24, 24.95s/it]100%|██████████| 20/20 [08:48<00:00, 25.68s/it]100%|██████████| 20/20 [08:48<00:00, 26.41s/it]
+Prompt executed in 547.79 seconds
+got prompt
+model weight dtype torch.float16, manual cast: None
+model_type EPS
+Using split attention in VAE
+Using split attention in VAE
+VAE load device: mps, offload device: cpu, dtype: torch.float16
+Requested to load SD1ClipModel
+loaded completely 9.5367431640625e+25 235.84423828125 True
+CLIP/text encoder model load device: cpu, offload device: cpu, current: cpu, dtype: torch.float16
+loaded diffusion model directly to GPU
+Requested to load BaseModel
+loaded completely 9.5367431640625e+25 1639.4336013793945 True
+Requested to load AutoencoderKL
+loaded completely 9.5367431640625e+25 159.55708122253418 True
+  0%|          | 0/20 [00:00<?, ?it/s]  0%|          | 0/20 [00:04<?, ?it/s]
+!!! Exception during processing !!! MPS backend out of memory (MPS allocated: 3.88 GB, other allocations: 1.85 GB, max allowed: 6.80 GB). Tried to allocate 1.83 GB on private pool. Use PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0 to disable upper limit for memory allocations (may cause system failure).
+Traceback (most recent call last):
+  File "/Volumes/T7/cursor/comfy/ComfyUI/execution.py", line 349, in execute
+    output_data, output_ui, has_subgraph = get_output_data(obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/execution.py", line 224, in get_output_data
+    return_values = _map_node_over_list(obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/execution.py", line 196, in _map_node_over_list
+    process_inputs(input_dict, i)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/execution.py", line 185, in process_inputs
+    results.append(getattr(obj, func)(**inputs))
+  File "/Volumes/T7/cursor/comfy/ComfyUI/nodes.py", line 1525, in sample
+    return common_ksampler(model, seed, steps, cfg, sampler_name, scheduler, positive, negative, latent_image, denoise=denoise)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/nodes.py", line 1492, in common_ksampler
+    samples = comfy.sample.sample(model, noise, steps, cfg, sampler_name, scheduler, positive, negative, latent_image,
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/sample.py", line 45, in sample
+    samples = sampler.sample(noise, positive, negative, cfg=cfg, latent_image=latent_image, start_step=start_step, last_step=last_step, force_full_denoise=force_full_denoise, denoise_mask=noise_mask, sigmas=sigmas, callback=callback, disable_pbar=disable_pbar, seed=seed)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/samplers.py", line 1133, in sample
+    return sample(self.model, noise, positive, negative, cfg, self.device, sampler, sigmas, self.model_options, latent_image=latent_image, denoise_mask=denoise_mask, callback=callback, disable_pbar=disable_pbar, seed=seed)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/samplers.py", line 1023, in sample
+    return cfg_guider.sample(noise, latent_image, sampler, sigmas, denoise_mask, callback, disable_pbar, seed)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/samplers.py", line 1008, in sample
+    output = executor.execute(noise, latent_image, sampler, sigmas, denoise_mask, callback, disable_pbar, seed)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/patcher_extension.py", line 111, in execute
+    return self.original(*args, **kwargs)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/samplers.py", line 976, in outer_sample
+    output = self.inner_sample(noise, latent_image, device, sampler, sigmas, denoise_mask, callback, disable_pbar, seed)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/samplers.py", line 959, in inner_sample
+    samples = executor.execute(self, sigmas, extra_args, callback, noise, latent_image, denoise_mask, disable_pbar)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/patcher_extension.py", line 111, in execute
+    return self.original(*args, **kwargs)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/samplers.py", line 738, in sample
+    samples = self.sampler_function(model_k, noise, sigmas, extra_args=extra_args, callback=k_callback, disable=disable_pbar, **self.extra_options)
+  File "/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/k_diffusion/sampling.py", line 161, in sample_euler
+    denoised = model(x, sigma_hat * s_in, **extra_args)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/samplers.py", line 390, in __call__
+    out = self.inner_model(x, sigma, model_options=model_options, seed=seed)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/samplers.py", line 939, in __call__
+    return self.predict_noise(*args, **kwargs)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/samplers.py", line 942, in predict_noise
+    return sampling_function(self.inner_model, x, timestep, self.conds.get("negative", None), self.conds.get("positive", None), self.cfg, model_options=model_options, seed=seed)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/samplers.py", line 370, in sampling_function
+    out = calc_cond_batch(model, conds, x, timestep, model_options)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/samplers.py", line 206, in calc_cond_batch
+    return executor.execute(model, conds, x_in, timestep, model_options)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/patcher_extension.py", line 111, in execute
+    return self.original(*args, **kwargs)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/samplers.py", line 319, in _calc_cond_batch
+    output = model.apply_model(input_x, timestep_, **c).chunk(batch_chunks)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_base.py", line 140, in apply_model
+    return comfy.patcher_extension.WrapperExecutor.new_class_executor(
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/patcher_extension.py", line 111, in execute
+    return self.original(*args, **kwargs)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/model_base.py", line 173, in _apply_model
+    model_output = self.diffusion_model(xc, t, context=context, control=control, transformer_options=transformer_options, **extra_conds).float()
+  File "/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/ldm/modules/diffusionmodules/openaimodel.py", line 831, in forward
+    return comfy.patcher_extension.WrapperExecutor.new_class_executor(
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/patcher_extension.py", line 111, in execute
+    return self.original(*args, **kwargs)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/ldm/modules/diffusionmodules/openaimodel.py", line 873, in _forward
+    h = forward_timestep_embed(module, h, emb, context, transformer_options, time_context=time_context, num_video_frames=num_video_frames, image_only_indicator=image_only_indicator)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/ldm/modules/diffusionmodules/openaimodel.py", line 44, in forward_timestep_embed
+    x = layer(x, context, transformer_options)
+  File "/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/ldm/modules/attention.py", line 860, in forward
+    x = block(x, context=context[i], transformer_options=transformer_options)
+  File "/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/ldm/modules/attention.py", line 746, in forward
+    n = self.attn1(n, context=context_attn1, value=value_attn1)
+  File "/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/ldm/modules/attention.py", line 640, in forward
+    out = optimized_attention(q, k, v, self.heads, attn_precision=self.attn_precision)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/ldm/modules/attention.py", line 211, in attention_sub_quad
+    hidden_states = efficient_dot_product_attention(
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/ldm/modules/sub_quadratic_attention.py", line 267, in efficient_dot_product_attention
+    res = torch.cat([
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/ldm/modules/sub_quadratic_attention.py", line 268, in <listcomp>
+    compute_query_chunk_attn(
+  File "/Volumes/T7/cursor/comfy/ComfyUI/comfy/ldm/modules/sub_quadratic_attention.py", line 170, in _get_attention_scores_no_kv_chunking
+    attn_probs = attn_scores.softmax(dim=-1)
+RuntimeError: MPS backend out of memory (MPS allocated: 3.88 GB, other allocations: 1.85 GB, max allowed: 6.80 GB). Tried to allocate 1.83 GB on private pool. Use PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0 to disable upper limit for memory allocations (may cause system failure).
+
+Prompt executed in 33.86 seconds
+got prompt
+  0%|          | 0/20 [00:00<?, ?it/s]  5%|▌         | 1/20 [00:43<13:46, 43.50s/it] 10%|█         | 2/20 [01:16<11:13, 37.43s/it] 15%|█▌        | 3/20 [01:36<08:17, 29.27s/it] 20%|██        | 4/20 [02:06<07:54, 29.67s/it] 25%|██▌       | 5/20 [02:40<07:49, 31.31s/it] 30%|███       | 6/20 [03:08<07:01, 30.10s/it] 35%|███▌      | 7/20 [03:44<06:54, 31.86s/it] 40%|████      | 8/20 [04:16<06:23, 31.95s/it] 45%|████▌     | 9/20 [04:45<05:43, 31.24s/it] 50%|█████     | 10/20 [05:18<05:17, 31.78s/it] 55%|█████▌    | 11/20 [05:56<05:03, 33.72s/it] 60%|██████    | 12/20 [06:27<04:21, 32.68s/it] 65%|██████▌   | 13/20 [07:51<05:37, 48.20s/it] 70%|███████   | 14/20 [08:13<04:02, 40.46s/it] 75%|███████▌  | 15/20 [08:38<02:58, 35.67s/it] 80%|████████  | 16/20 [09:31<02:43, 40.91s/it] 85%|████████▌ | 17/20 [09:54<01:46, 35.66s/it] 90%|█████████ | 18/20 [10:17<01:03, 31.80s/it] 95%|█████████▌| 19/20 [10:41<00:29, 29.33s/it]100%|██████████| 20/20 [11:06<00:00, 28.03s/it]100%|██████████| 20/20 [11:06<00:00, 33.31s/it]
+Prompt executed in 682.25 seconds
+got prompt
+  0%|          | 0/20 [00:00<?, ?it/s]  5%|▌         | 1/20 [00:22<07:00, 22.13s/it] 10%|█         | 2/20 [00:46<06:56, 23.16s/it] 15%|█▌        | 3/20 [01:08<06:26, 22.76s/it] 20%|██        | 4/20 [01:30<06:01, 22.57s/it] 25%|██▌       | 5/20 [01:51<05:29, 21.96s/it] 30%|███       | 6/20 [02:11<04:56, 21.20s/it] 35%|███▌      | 7/20 [02:31<04:33, 21.01s/it] 40%|████      | 8/20 [02:50<04:01, 20.14s/it] 45%|████▌     | 9/20 [03:08<03:34, 19.54s/it] 50%|█████     | 10/20 [03:26<03:11, 19.12s/it] 55%|█████▌    | 11/20 [03:48<02:59, 19.97s/it] 60%|██████    | 12/20 [04:08<02:40, 20.02s/it] 65%|██████▌   | 13/20 [04:30<02:24, 20.64s/it] 70%|███████   | 14/20 [04:51<02:03, 20.66s/it] 75%|███████▌  | 15/20 [05:10<01:40, 20.09s/it] 80%|████████  | 16/20 [05:30<01:20, 20.20s/it] 85%|████████▌ | 17/20 [05:50<01:00, 20.28s/it] 90%|█████████ | 18/20 [06:10<00:40, 20.15s/it] 95%|█████████▌| 19/20 [06:30<00:20, 20.07s/it]100%|██████████| 20/20 [06:49<00:00, 19.64s/it]100%|██████████| 20/20 [06:49<00:00, 20.47s/it]
+Prompt executed in 420.89 seconds
+Warning, you are using an old pytorch version and some ckpt/pt files might be loaded unsafely. Upgrading to 2.4 or above is recommended.
+Total VRAM 16384 MB, total RAM 16384 MB
+pytorch version: 2.2.2
+Mac Version (14, 5)
+Set vram state to: SHARED
+Device: mps
+/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Using sub quadratic optimization for attention, if you have memory or speed issues try using: --use-split-cross-attention
+Python version: 3.9.6 (default, Feb  3 2024, 15:58:28) 
+[Clang 15.0.0 (clang-1500.3.9.4)]
+ComfyUI version: 0.3.34
+ComfyUI frontend version: 1.19.9
+[Prompt Server] web root: /Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/comfyui_frontend_package/static
+
+Import times for custom nodes:
+   0.0 seconds: /Volumes/T7/cursor/comfy/ComfyUI/custom_nodes/websocket_image_save.py
+
+Starting server
+
+Traceback (most recent call last):
+  File "/Volumes/T7/cursor/comfy/ComfyUI/main.py", line 308, in <module>
+    event_loop.run_until_complete(x)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Volumes/T7/cursor/comfy/ComfyUI/main.py", line 293, in start_all
+    await run(prompt_server, address=args.listen, port=args.port, verbose=not args.dont_print_server, call_on_start=call_on_start)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/main.py", line 218, in run
+    await asyncio.gather(
+  File "/Volumes/T7/cursor/comfy/ComfyUI/server.py", line 853, in start_multi_address
+    await site.start()
+  File "/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/aiohttp/web_runner.py", line 121, in start
+    self._server = await loop.create_server(
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 1494, in create_server
+    raise OSError(err.errno, 'error while attempting '
+OSError: [Errno 48] error while attempting to bind on address ('127.0.0.1', 8188): address already in use
+Warning, you are using an old pytorch version and some ckpt/pt files might be loaded unsafely. Upgrading to 2.4 or above is recommended.
+Total VRAM 16384 MB, total RAM 16384 MB
+pytorch version: 2.2.2
+Mac Version (14, 5)
+Set vram state to: SHARED
+Device: mps
+/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Using sub quadratic optimization for attention, if you have memory or speed issues try using: --use-split-cross-attention
+Python version: 3.9.6 (default, Feb  3 2024, 15:58:28) 
+[Clang 15.0.0 (clang-1500.3.9.4)]
+ComfyUI version: 0.3.34
+ComfyUI frontend version: 1.19.9
+[Prompt Server] web root: /Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/comfyui_frontend_package/static
+
+Import times for custom nodes:
+   0.0 seconds: /Volumes/T7/cursor/comfy/ComfyUI/custom_nodes/websocket_image_save.py
+
+Starting server
+
+Traceback (most recent call last):
+  File "/Volumes/T7/cursor/comfy/ComfyUI/main.py", line 308, in <module>
+    event_loop.run_until_complete(x)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Volumes/T7/cursor/comfy/ComfyUI/main.py", line 293, in start_all
+    await run(prompt_server, address=args.listen, port=args.port, verbose=not args.dont_print_server, call_on_start=call_on_start)
+  File "/Volumes/T7/cursor/comfy/ComfyUI/main.py", line 218, in run
+    await asyncio.gather(
+  File "/Volumes/T7/cursor/comfy/ComfyUI/server.py", line 853, in start_multi_address
+    await site.start()
+  File "/Users/zhangwenya/Library/Python/3.9/lib/python/site-packages/aiohttp/web_runner.py", line 121, in start
+    self._server = await loop.create_server(
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 1494, in create_server
+    raise OSError(err.errno, 'error while attempting '
+OSError: [Errno 48] error while attempting to bind on address ('127.0.0.1', 8188): address already in use
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/resource_tracker.py:216: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
